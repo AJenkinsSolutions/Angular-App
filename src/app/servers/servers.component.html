@@ -1,0 +1,54 @@
+<!-- <label for="">Server Name</label>
+<br>
+<input type="text" class="form-control" (input)="onInputServerName($event)">
+<br> -->
+<label for="">Server Name</label>
+<br>
+<input type="text" class="form-control" [(ngModel)]="serverName">
+<br> 
+
+<!-- <p>{{ serverName }}</p> -->
+<!-- Using 'event binding ()' we call we method that will run when users clicks the button -->
+<!-- Using 'Property binding' be bind the Button elements 'disabled' property with our 'allowNewServers' var in our component using '[]' -->
+<button class="btn btn-primary" [disabled] = "!allowNewServers" (click)="onCreateServer()" >Add servers</button>
+<br>
+<br>
+<!-- <p>{{ allowNewServers }}</p> -->
+<!-- <p>{{ serverCreationStatus }}</p> -->
+<p *ngIf="serverCreated"> Server was created, server name: {{ serverName }} </p>
+<ng-template #noServer>
+    <p>No Server was created</p>
+</ng-template>
+<p *ngFor="let server of servers"><app-server></app-server></p>
+
+
+
+<br>
+<h3>Assignment 1</h3>
+<label >Username</label>
+<input type="text" class="form-control" [(ngModel)] = "userName" >
+<p>{{ userName }}</p>
+<button class="btn btn-primary" [disabled] ="!userName" (click)="resetUsername()">Reset Username</button>
+<br>
+
+
+<br>
+<h3>Assignment 2</h3>
+<h6>ngFor</h6>
+<button class="btn btn-primary" (click)="menuToggle()">Display Details</button>
+<br>
+<p style="color: purple;">Debug: {{ menuVisable }}</p>
+<p style="color: purple;">Debug: {{ btnClickCount }}</p>
+<p [hidden]="menuVisable">Welcome to the secret menu</p>
+
+<div *ngIf="btnClickCount >= 4; else lessThanFive">
+
+    <p *ngFor="let item of btnClicks" [ngStyle]="{'background-color': btnColor2}">{{btnClicks}}</p>
+</div>
+
+
+<br>
+
+<ng-template #lessThanFive>
+    <p *ngFor="let item of btnClicks">{{item}}</p>
+</ng-template>
